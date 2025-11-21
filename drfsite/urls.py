@@ -14,12 +14,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+from rest_framework import routers
+from django.urls import include
 from django.contrib import admin
 from django.urls import path
-from rest_framework import routers
 from women.views import WomenAPIList, WomenAPIUpdate, WomenAPIDestroy
-from django.urls import include
 
+
+# Свой кастомный роутер, который создает маршруты для списка записей и отдельной записи.
 # class MyCustomRouter(routers.SimpleRouter):
 #     routes = [
 #         routers.Route(url=r'^{prefix}$',
@@ -44,4 +47,5 @@ urlpatterns = [
     path('api/v1/women/', WomenAPIList.as_view()),
     path('api/v1/women/<int:pk>/', WomenAPIUpdate.as_view()),
     path('api/v1/womendelete/<int:pk>/', WomenAPIDestroy.as_view()),
+    path('api/v1/drf-auth/', include('rest_framework.urls')),
 ]

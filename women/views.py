@@ -1,11 +1,11 @@
+from rest_framework.response import Response
+from rest_framework import viewsets
+from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from women.permissions import *
 from women.models import *
 from women.serializers import WomenSerializer
 from rest_framework import generics
-from rest_framework.response import Response
-from rest_framework import viewsets
-from rest_framework.decorators import action
 
 
 # class WomenViewSet(viewsets.ModelViewSet):
@@ -26,6 +26,7 @@ from rest_framework.decorators import action
 #             return Women.objects.all()[:3]
 #         else:
 #             return Women.objects.filter(pk=pk)
+
 
 class WomenAPIList(generics.ListCreateAPIView):
     queryset = Women.objects.all()
